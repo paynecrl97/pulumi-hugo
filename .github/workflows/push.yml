@@ -35,20 +35,6 @@ jobs:
         working-directory: docs
         run: hugo mod get -u github.com/${{ github.repository }}/themes/current
 
-      - name: Fetch the pull request for this commit
-        uses: octokit/request-action@v2.x
-        id: pull_requests
-        with:
-          route: GET /repos/:repository/commits/:commit_sha/pulls
-          mediaType: |
-            previews:
-              - antiope
-              - groot-preview
-          repository: ${{ github.repository }}
-          commit_sha: ${{github.sha}}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create a pull request on pulumi/docs
         uses: peter-evans/create-pull-request@v3
         with:
@@ -62,4 +48,4 @@ jobs:
           token: ${{ secrets.PULUMI_BOT_TOKEN }}
           draft: true
           body: |
-            Updates the Hugo module reference for ${{ github.repository }}. See ${{ fromJson(steps.pull_requests.outputs.data)[0].html_url }} for details.
+            Updates the Hugo module reference to bring in ${{ github.repository }}/${{github.sha}}.
