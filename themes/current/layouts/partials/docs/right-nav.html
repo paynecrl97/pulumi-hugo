@@ -21,7 +21,7 @@
             </li>
         {{ end }}
         <li>
-            <a data-track="request-change" class="text-gray-600 hover:text-blue-700 text-xs" href="{{ $.Site.Params.repositoryURL }}/issues/new?body=File: [{{ .Path }}]({{ $.Page.Permalink }})" target="_blank">
+            <a data-track="request-change" class="text-gray-600 hover:text-blue-700 text-xs" href="{{ $.Site.Params.repositoryURL }}/issues/new?body=File: [{{ getenv "THEME_PATH" }}content/{{ .Path }}]({{ $.Page.Permalink }})" target="_blank">
                 <i class="far fa-check-square mr-2" style="width: 14px"></i>Request a Change
             </a>
         </li>

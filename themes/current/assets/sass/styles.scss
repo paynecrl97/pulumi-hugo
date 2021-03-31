@@ -3,6 +3,7 @@
 
 @import "colors";
 @import "mixins";
+
 @import "animation";
 @import "api-nodejs";
 @import "api-python";
@@ -34,12 +35,14 @@
 @import "toc";
 @import "toggle";
 @import "tooltip";
+
 @import "components/banner";
 @import "components/chooser";
 @import "components/choosable";
 @import "components/convert";
 @import "components/greenhouse-jobs-list";
 @import "components/examples";
+@import "components/audio";
 
 h1, h2, h3, h4, h5, h6 {
     @apply font-display text-gray-700 mb-2;
