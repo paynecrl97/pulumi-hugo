@@ -7,7 +7,10 @@
   "license": "MIT",
   "dependencies": {
     "concurrently": "^6.0.0",
+    "got": "^11.8.2",
+    "http-proxy": "^1.18.1",
     "js-yaml": "^3.13.1",
+    "jsdom": "^16.5.3",
     "markdownlint": "^0.17.2"
   }
 }

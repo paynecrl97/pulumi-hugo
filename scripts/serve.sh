@@ -18,9 +18,12 @@ if [ "$1" == "all" ]; then
     # Run Hugo and the theme watchers concurrently.
     yarn run concurrently --raw --kill-others \
         "yarn --cwd themes/default watch" \
-        "hugo serve --buildDrafts --buildFuture | grep -v -e 'WARN .* REF_NOT_FOUND'"
+        "node scripts/proxy.js" \
+        "hugo serve --buildDrafts --buildFuture --port 1314 | grep -v -e 'WARN .* REF_NOT_FOUND'"
     exit
 fi
 
 # Just run Hugo.
-hugo serve --buildDrafts --buildFuture | grep -v -e 'WARN .* REF_NOT_FOUND'
+yarn run concurrently --raw --kill-others \
+    "node scripts/proxy.js" \
+    "hugo serve --buildDrafts --buildFuture --port 1314 | grep -v -e 'WARN .* REF_NOT_FOUND'"
